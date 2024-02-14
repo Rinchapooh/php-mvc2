@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="50d651e3-9203-43a1-ac28-d89e41e56b38" name="D200_DEV_PHPMVC2">
+        <fileTransfer rootFolder="/git/DEVELOPMENT/phpmvc2" accessType="SFTP" host="192.168.0.200" port="22" sshConfigId="cfa9fe04-1623-4a58-bbaa-eeb461e37c87" sshConfig="root@192.168.0.200:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
