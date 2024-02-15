@@ -4,46 +4,65 @@ namespace Framework;
 
 class Router
 {
-
     private array $routes = [];
 
-    public function  add(string $path, array $params): void
+    public function add(string $path, array $params = []): void
     {
-
         $this->routes[] = [
-
             "path" => $path,
             "params" => $params
-
         ];
-
     }
 
     public function match(string $path): array|bool
     {
+        $path = urldecode($path);
 
-        $pattern = "#^/(?<controller>[a-z]+)/(?<action>[a-z]+)$#";
+        $path = trim($path, "/");
 
-        if (preg_match($pattern, $path, $matches)){
+        foreach ($this->routes as $route) {
 
-            //Filtering the matches array
-            $matches = array_filter($matches, "is_string", ARRAY_FILTER_USE_KEY);
+            $pattern = $this->getPatternFromRoutePath($route["path"]);
 
-            return $matches;
+            //echo $pattern, "\n";
 
-        };
+            if (preg_match($pattern, $path, $matches)) {
 
+                $matches = array_filter($matches, "is_string", ARRAY_FILTER_USE_KEY);
 
-//        foreach ($this->routes as $route) {
-//
-//            if ($route["path"] == $path){
-//
-//                return $route["params"];
-//            }
-//        }
+                $params = array_merge($matches, $route["params"]);
+
+                return $params;
+            }
+        }
 
         return false;
     }
 
+    private function getPatternFromRoutePath(string $route_path): string
+    {
+        $route_path = trim($route_path, "/");
 
+        $segments = explode("/", $route_path);
+
+        $segments = array_map(function(string $segment): string {
+
+            if (preg_match("#^\{([a-z][a-z0-9]*)\}$#", $segment, $matches)) {
+
+                return "(?<" . $matches[1] . ">[^/]*)";
+
+            }
+
+            if (preg_match("#^\{([a-z][a-z0-9]*):(.+)\}$#", $segment, $matches)) {
+
+                return "(?<" . $matches[1] . ">" .$matches[2] . ")";
+
+            }
+
+            return $segment;
+
+        }, $segments);
+
+        return "#^" . implode("/", $segments) . "$#iu";
+    }
 }

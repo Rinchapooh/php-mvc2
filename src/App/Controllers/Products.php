@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controllers;
 
 use App\Models\Product;
@@ -10,19 +9,16 @@ class Products
     public function index()
     {
 
-
         $model = new Product;
-
         $products = $model->getData();
-
-            require 'views/products_view.php';
-
-
+        require 'views/products_view.php';
     }
 
 
-    public function show()
+    public function show(string $id)
     {
+        var_dump($id);
+
         require 'views/products_show.php';
     }
 }

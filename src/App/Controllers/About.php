@@ -12,7 +12,7 @@ class About
 
     }
 
-    public function getContacts()
+    public function contacts()
     {
         require 'views/about/about_contacts.php';
 
