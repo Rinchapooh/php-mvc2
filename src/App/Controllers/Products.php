@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Product;
+use Framework\Viewer;
 
 class Products
 {
@@ -11,7 +12,10 @@ class Products
 
         $model = new Product;
         $products = $model->getData();
-        require 'views/products_view.php';
+
+        $viewer = new Viewer();
+
+      echo  $viewer->render("products_view.php", ["products" => $products]);
     }
 
 
@@ -20,5 +24,11 @@ class Products
         var_dump($id);
 
         require 'views/products_show.php';
+    }
+
+    public function showPage(string $title, string $id, string $page )
+    {
+
+        echo $title, " ", $id, " ", $page;
     }
 }
