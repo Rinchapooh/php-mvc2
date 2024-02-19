@@ -2,19 +2,30 @@
 
 namespace App\Controllers;
 
+use App\Models\Product;
+use Framework\Viewer;
+use function Sodium\crypto_sign_detached;
+
 class About
 {
-
-    public function index()
+    public function __construct(private Viewer $viewer)
     {
-
-        require 'views/about/about_index.php';
 
     }
 
-    public function contacts()
+    public function index(): void
     {
-        require 'views/about/about_contacts.php';
+
+        echo $this->viewer->render('About/about_index.php');
+
+    }
+
+    public function contacts(): void
+    {
+
+
+        echo $this->viewer->render('About/about_contacts.php');
+
 
     }
 

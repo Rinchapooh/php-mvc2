@@ -14,6 +14,11 @@ class Router
         ];
     }
 
+
+    /*
+     * return $params ["controller" => "home", "action" => "index"]
+     *
+     */
     public function match(string $path): array|bool
     {
         $path = urldecode($path);

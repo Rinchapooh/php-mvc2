@@ -7,11 +7,3 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-
-<a href="/about/contacts"> Get Contacts</a>
-
-</body>
-</html>
-
-

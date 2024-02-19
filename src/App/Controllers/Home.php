@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Controllers;
-class home
+use Framework\Viewer;
+
+class Home
 {
     public function index()
     {
-        require 'views/home_index.php';
+        $viewer = new Viewer();
+
+       echo $viewer->render('Home/index.php');
+
 
     }
 

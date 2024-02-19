@@ -13,8 +13,11 @@ class Viewer
 
         require "views/$template";
 
-       return ob_clean();
+        return ob_get_clean();
 
-        //return file_get_contents("views/$template");
-     }
+//        return ob_clean();
+
+//        return file_get_contents("views/$template");
+
+    }
 }

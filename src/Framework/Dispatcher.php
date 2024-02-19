@@ -3,18 +3,20 @@
 namespace Framework;
 use ReflectionMethod;
 
+
 class Dispatcher
 {
 
-    private Router $router;
-    public function __construct(Router $router)
+
+    public function __construct(private Router $router,
+                                private Container $container)
     {
 
-        $this->router = $router;
+
 
     }
 
-    public function handle(string $path)
+    public function handle(string $path): void
     {
 
         $params = $this->router->match($path);
@@ -27,9 +29,7 @@ class Dispatcher
         $action = $this->getActionName($params);
         $controller = $this->getControllerName($params);
 
-
-        //Creating controller and executing action;
-        $controller_object = new $controller;
+        $controller_object = $this->container->get($controller);
 
         $args = $this->getActionArguments($controller, $action, $params);
 
@@ -83,5 +83,6 @@ class Dispatcher
         return $action;
 
     }
+
 
 }
