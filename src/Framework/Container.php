@@ -3,8 +3,10 @@
 declare(strict_types=1);
 
 namespace Framework;
+use http\Exception\InvalidArgumentException;
 use ReflectionClass;
 use Closure;
+use Exception;
 class Container
 {
 
@@ -13,6 +15,8 @@ class Container
     public function set(string $name, Closure $value): void
     {
         $this->registry[$name] = $value;
+
+        //var_dump($this->registry);
 
 
     }
@@ -39,7 +43,7 @@ class Container
 
             if ($type === null) {
 
-                exit("Constructor parameter '{$parameter->getName()}'              
+                throw new InvalidArgumentException("Constructor parameter '{$parameter->getName()}'              
                  in the $class_name class has no type declaration ");
 
 
@@ -65,10 +69,12 @@ class Container
 
             $dependencies[] = $this->get((string)$type);
 
-            //xdebug_var_dump($dependencies);
+
 
         }
 
+
+        xdebug_var_dump($dependencies);
         return new $class_name(... $dependencies);
     }
 

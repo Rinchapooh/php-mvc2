@@ -8,9 +8,6 @@ use Framework\Viewer;
 
 class Products
 {
-
-
-
     private Viewer $viewer;
     private Product $model;
     public function __construct(Viewer $viewer, Product $model){

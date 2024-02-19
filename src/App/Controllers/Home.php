@@ -5,11 +5,15 @@ use Framework\Viewer;
 
 class Home
 {
+
+    public function __construct(private Viewer $viewer)
+    {
+
+    }
     public function index()
     {
-        $viewer = new Viewer();
 
-       echo $viewer->render('Home/index.php');
+       echo $this->viewer->render('Home/index.php');
 
 
     }
