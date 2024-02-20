@@ -13,6 +13,7 @@ class Useradmin2
     }
     public function showList()
     {
+        echo $this->viewer->render("shared/header.php");
         $this->viewer->render('About/about_index.php');
     }
 }

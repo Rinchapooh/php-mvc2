@@ -74,7 +74,7 @@ class Container
         }
 
 
-        xdebug_var_dump($dependencies);
+        //xdebug_var_dump($dependencies);
         return new $class_name(... $dependencies);
     }
 

@@ -13,7 +13,8 @@ class Home
     public function index()
     {
 
-       echo $this->viewer->render('Home/index.php');
+        echo $this->viewer->render("shared/header.php");
+        echo $this->viewer->render('Home/index.php');
 
 
     }

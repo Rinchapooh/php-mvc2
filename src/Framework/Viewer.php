@@ -11,13 +11,10 @@ class Viewer
 
         ob_start();
 
-        require "views/$template";
+        require dirname(__DIR__, 1) . "/views/$template";
 
         return ob_get_clean();
 
-//        return ob_clean();
-
-//        return file_get_contents("views/$template");
 
     }
 }

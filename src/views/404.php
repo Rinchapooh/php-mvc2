@@ -5,13 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>404</title>
 </head>
 <body>
 
-<p>Here is the home index page!!!!</p>
 
-<a href="/products">Products</a>
+<h1>Page not found 404 </h1>
 
 </body>
 </html>

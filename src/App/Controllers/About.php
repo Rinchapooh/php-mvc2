@@ -16,6 +16,7 @@ class About
     public function index(): void
     {
 
+        echo $this->viewer->render("shared/header.php");
         echo $this->viewer->render('About/about_index.php');
 
     }
@@ -24,6 +25,7 @@ class About
     {
 
 
+        echo $this->viewer->render("shared/header.php");
         echo $this->viewer->render('About/about_contacts.php');
 
 

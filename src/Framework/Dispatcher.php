@@ -22,7 +22,9 @@ class Dispatcher
         $params = $this->router->match($path);
 
         if (!$params){
+
             throw new PageNotFoundException("No Route Matched for  '$path' ");
+
         }
 
         //Extracting controller's path and action's names;
